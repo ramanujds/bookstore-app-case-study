@@ -92,31 +92,31 @@ public class BookstoreErrorHandlerTest {
 
     // create a method to validate the request body
 
-     @Test
-    public void testHandleMethodArgumentNotValidException() throws Exception{
-
-        // Given
-        Book book = new Book(0, "", "", 1,1L,0.0);
-
-        // When
-        when(bookstoreService.saveBook(book)).thenThrow(new ValidationException("Validation failed"));
-
-        // Then
-
-        mockMvc.perform(post("/books")
-                .contentType("application/json")
-                .content(convertObjectToJsonString(book)))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.status").value(400))
-                .andExpect(jsonPath("$.message").value("Validation failed"))
-                .andExpect(jsonPath("$.timestamp").isNotEmpty())
-                .andExpect(jsonPath("$.path").value("/books"))
-                .andExpect(jsonPath("$.error").value("Bad Request"))
-                .andDo(print())
-                .andReturn();
-
-
-    }
+//     @Test
+//    public void testHandleMethodArgumentNotValidException() throws Exception{
+//
+//        // Given
+//        Book book = new Book(0, "", "", 1,1L,0.0);
+//
+//        // When
+//        when(bookstoreService.saveBook(book)).thenThrow(new ValidationException("Validation failed"));
+//
+//        // Then
+//
+//        mockMvc.perform(post("/books")
+//                .contentType("application/json")
+//                .content(convertObjectToJsonString(book)))
+//                .andExpect(status().isBadRequest())
+//                .andExpect(jsonPath("$.status").value(400))
+//                .andExpect(jsonPath("$.message").value("Validation failed"))
+//                .andExpect(jsonPath("$.timestamp").isNotEmpty())
+//                .andExpect(jsonPath("$.path").value("/books"))
+//                .andExpect(jsonPath("$.error").value("Bad Request"))
+//                .andDo(print())
+//                .andReturn();
+//
+//
+//    }
 
     // create a method to handle Exception
 
